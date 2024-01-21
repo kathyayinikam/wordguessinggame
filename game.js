@@ -3,6 +3,7 @@ let ccount = 0;
 let ucount = 0;
 const computerGuessDisplay = document.getElementById('ans');
 let displayedWords = [];
+let user = [];
 
 function fetchWords() {
     return fetch('dictionary.txt')
@@ -15,7 +16,7 @@ function fetchWords() {
 
 function game() {
     const userInput = document.getElementById('qty').value;
-    ucount = ucount + userInput.length;
+    
     console.log(ucount);
 
     // Clear the input field
@@ -28,23 +29,33 @@ function game() {
         list1 = wordsList;
 
         const uword = userInput;
-        const b = uword[uword.length - 1];
 
-        // Filter out words already displayed
-        const availableWords = list1.filter(word => !displayedWords.includes(word) && b === word[0]);
+        // Move the push statement here
+       
 
-        if (availableWords.length > 0) {
-            const longWord = availableWords.reduce((prev, current) => (prev.length > current.length) ? prev : current);
-
-            // Add the displayed word to the list
-            displayedWords.push(longWord);
-
-            computerGuessDisplay.innerHTML = "Computer guess: "+longWord;
-            ccount=ccount+longWord.length
+        if (user.includes(uword)) {
+            computerGuessDisplay.innerHTML = "This word is already entered";
         } else {
-            computerGuessDisplay.innerHTML = 'Computer runs out of words';
+            ucount = ucount + userInput.length;
+            user.push(uword);
+            const b = uword[uword.length - 1];
+
+            // Filter out words already displayed
+            const availableWords = list1.filter(word => !displayedWords.includes(word) && b === word[0]);
+
+            if (availableWords.length > 0) {
+                const longWord = availableWords.reduce((prev, current) => (prev.length > current.length) ? prev : current);
+
+                // Add the displayed word to the list
+                displayedWords.push(longWord);
+
+                computerGuessDisplay.innerHTML = "Computer guess: " + longWord;
+                ccount = ccount + longWord.length;
+
+            } else {
+                computerGuessDisplay.innerHTML = 'Computer runs out of words';
+            }
         }
-        return ucount;
     });
 }
 
@@ -54,11 +65,9 @@ function end() {
     const res = document.getElementById('result');
     userscore.innerHTML = "Your score: " + ucount;
     compscore.innerHTML = "Computer score : " + ccount;
-    if(ccount>ucount){
+    if (ccount > ucount) {
         res.innerHTML = "Computer wins!";
-    }
-    else{
+    } else {
         res.innerHTML = "Congratulations! You win";
     }
-    }
-
+}
