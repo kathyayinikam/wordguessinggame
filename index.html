@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Guessing Game</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      align-items: center;
+      background-color: rgb(6, 13, 28);
+      color:white;
+     align-items: center;
+     justify-content: center;
+      
+    }
+    .main{
+        color:white;
+      transform: scale(1.05);
+      box-shadow: 0 0 5rem #0ef;
+      width:600px;
+      height: auto;
+  margin-left: 300px;
+  margin-top: 100px;
+  animation: glow 1s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px black;
+        }
+        to {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.8);
+        }
+      }
+    .heading {
+     
+      height: 100px;
+      width: 100%;
+      margin-top: -20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  margin-right:15px;
+  color:#0ef;
+  transform: scale(1.05);
+  box-shadow: 0 0 1rem #0ef;
+  margin:3rem 1.5rem 3 rem 0;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  justify-content: center;
+
+    }
+    #qty {
+      margin-top: 30px;
+      justify-content: center;
+      height: 50px;
+     background-color: rgb(6, 13, 28);
+     box-shadow: 0 0 1rem #0ef;
+     
+     
+    }
+    #button{
+        background-color:rgb(6, 13, 28);
+        box-shadow: 0 0 1rem #0ef;
+        color:#0ef;
+        font-weight: 700;
+        padding:10px;
+        width:auto;
+        
+    }
+    #button:hover{
+        background-color: #0ef;
+        color: azure;
+    }
+  </style>
+</head>
+<body>
+    <div class="main">
+  <div class="heading"><h1>WORD GAME</h1></div>
+  <input type="text" id="qty" style="color:white">
+  <br>
+  <br>
+ 
+ 
+  <button onclick="game()" id="button">Submit</button>
+  <br>
+  <br>
+
+  <div id="ans" style="color:#0ef;font-weight:900; font-size:25px;transition:none;"></div>
+  <h3>Tired? End the game</h3>
+  <button onclick="end()" id="button">Check the result</button>
+  <div id="score" style="font-weight:700px;font-size:20px;"></div>
+  <div id="cscore" style="font-weight:700px;font-size:20px;"></div>
+  <div id="result" style="font-weight:950px;font-size:50px;color:#0ef;font-family:'Courier New', Courier, monospace"></div>
+</div>
+  <script src="game.js"></script>
+</body>
+</html>
